@@ -1,0 +1,105 @@
+[2024-06-24::23:27:19] [INFO] [File:unit_test_customScalar.py, Line:73]: Starting unit test...
+[2024-06-24::23:27:19] [INFO] [File:unit_test_customScalar.py, Line:33]: Test 'customScalar':<shape=[32],scalar=1.000000,scale=10.000000>
+[2024-06-24::23:27:25] [INFO] [File:trt_model.py, Line:48]: Succeeded building engine!
+[2024-06-24::23:30:46] [INFO] [File:unit_test_customScalar.py, Line:73]: Starting unit test...
+[2024-06-24::23:30:46] [INFO] [File:unit_test_customScalar.py, Line:33]: Test 'customScalar':<shape=[32],scalar=1.000000,scale=10.000000>
+[2024-06-24::23:30:48] [INFO] [File:trt_model.py, Line:24]: Succeeded loading engine!
+[2024-06-24::23:30:48] [INFO] [File:trt_model.py, Line:137]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-24::23:30:48] [INFO] [File:unit_test_customScalar.py, Line:54]: Test 'customScalar':<shape=[32],scalar=1.000000,scale=10.000000> finish!
+
+[2024-06-24::23:30:48] [INFO] [File:unit_test_customScalar.py, Line:33]: Test 'customScalar':<shape=[32, 32],scalar=2.000000,scale=5.000000>
+[2024-06-24::23:30:51] [INFO] [File:trt_model.py, Line:48]: Succeeded building engine!
+[2024-06-24::23:30:51] [INFO] [File:trt_model.py, Line:137]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-24::23:30:51] [INFO] [File:unit_test_customScalar.py, Line:54]: Test 'customScalar':<shape=[32, 32],scalar=2.000000,scale=5.000000> finish!
+
+[2024-06-24::23:30:51] [INFO] [File:unit_test_customScalar.py, Line:33]: Test 'customScalar':<shape=[16, 16, 16],scalar=1.000000,scale=3.000000>
+[2024-06-24::23:30:51] [INFO] [File:trt_model.py, Line:48]: Succeeded building engine!
+[2024-06-24::23:30:51] [INFO] [File:trt_model.py, Line:137]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-24::23:30:51] [INFO] [File:unit_test_customScalar.py, Line:54]: Test 'customScalar':<shape=[16, 16, 16],scalar=1.000000,scale=3.000000> finish!
+
+[2024-06-24::23:30:51] [INFO] [File:unit_test_customScalar.py, Line:33]: Test 'customScalar':<shape=[8, 8, 8, 8],scalar=1.000000,scale=5.000000>
+[2024-06-24::23:30:51] [INFO] [File:trt_model.py, Line:48]: Succeeded building engine!
+[2024-06-24::23:30:51] [INFO] [File:trt_model.py, Line:137]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-24::23:30:51] [INFO] [File:unit_test_customScalar.py, Line:54]: Test 'customScalar':<shape=[8, 8, 8, 8],scalar=1.000000,scale=5.000000> finish!
+
+[2024-06-24::23:30:51] [INFO] [File:unit_test_customScalar.py, Line:75]: All tests are passed!!
+[2024-06-24::23:32:46] [INFO]: Starting unit test...
+[2024-06-24::23:32:46] [INFO]: Test 'customScalar':<shape=[32],scalar=1.000000,scale=10.000000>
+[2024-06-24::23:32:48] [INFO]: Succeeded loading engine!
+[2024-06-24::23:32:48] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-24::23:32:48] [INFO]: Test 'customScalar':<shape=[32],scalar=1.000000,scale=10.000000> finish!
+
+[2024-06-24::23:32:48] [INFO]: Test 'customScalar':<shape=[32, 32],scalar=2.000000,scale=5.000000>
+[2024-06-24::23:32:48] [INFO]: Succeeded loading engine!
+[2024-06-24::23:32:48] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-24::23:32:48] [INFO]: Test 'customScalar':<shape=[32, 32],scalar=2.000000,scale=5.000000> finish!
+
+[2024-06-24::23:32:48] [INFO]: Test 'customScalar':<shape=[16, 16, 16],scalar=1.000000,scale=3.000000>
+[2024-06-24::23:32:48] [INFO]: Succeeded loading engine!
+[2024-06-24::23:32:48] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-24::23:32:48] [INFO]: Test 'customScalar':<shape=[16, 16, 16],scalar=1.000000,scale=3.000000> finish!
+
+[2024-06-24::23:32:48] [INFO]: Test 'customScalar':<shape=[8, 8, 8, 8],scalar=1.000000,scale=5.000000>
+[2024-06-24::23:32:48] [INFO]: Succeeded loading engine!
+[2024-06-24::23:32:48] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-24::23:32:48] [INFO]: Test 'customScalar':<shape=[8, 8, 8, 8],scalar=1.000000,scale=5.000000> finish!
+
+[2024-06-24::23:32:48] [INFO]: All tests are passed!!
+[2024-06-24::23:37:45] [INFO]: Starting unit test...
+[2024-06-24::23:37:45] [INFO]: Test 'customLeakyReLU':<shape=[32],alpha=0.010000>
+[2024-06-24::23:37:49] [INFO]: Succeeded building engine!
+[2024-06-24::23:37:49] [DEBUG]: input[0]:(32,)
+[2024-06-24::23:37:49] [DEBUG]: 	SumAbs=1.74826e+01,Var=0.35308,Max=0.93652,Min=-0.99977,SAD=21.38007
+[2024-06-24::23:37:49] [DEBUG]: 	[-0.166   0.4406 -0.9998 -0.3953 -0.7065] ...  [-0.9219 -0.6603  0.7563 -0.8033 -0.1578]
+[2024-06-24::23:37:49] [DEBUG]: output(plugin-impl)[0]:(32,)
+[2024-06-24::23:37:49] [DEBUG]: 	SumAbs=6.43579e+00,Var=0.09320,Max=0.93652,Min=-0.01000,SAD=9.29268
+[2024-06-24::23:37:49] [DEBUG]: 	[-0.0017  0.4406 -0.01   -0.004  -0.0071] ...  [-0.0092 -0.0066  0.7563 -0.008  -0.0016]
+[2024-06-24::23:37:49] [DEBUG]: output(cpu-impl)[0]:(32,)
+[2024-06-24::23:37:49] [DEBUG]: 	SumAbs=6.43579e+00,Var=0.09320,Max=0.93652,Min=-0.01000,SAD=9.29268
+[2024-06-24::23:37:49] [DEBUG]: 	[-0.0017  0.4406 -0.01   -0.004  -0.0071] ...  [-0.0092 -0.0066  0.7563 -0.008  -0.0016]
+[2024-06-24::23:37:49] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-24::23:37:49] [INFO]: Test 'customLeakyReLU':<shape=[32],alpha=0.010000> finish!
+
+[2024-06-24::23:37:49] [INFO]: Test 'customLeakyReLU':<shape=[32, 32],alpha=0.040000>
+[2024-06-24::23:37:49] [INFO]: Succeeded building engine!
+[2024-06-24::23:37:49] [DEBUG]: input[0]:(32, 32)
+[2024-06-24::23:37:49] [DEBUG]: 	SumAbs=5.10871e+02,Var=0.33412,Max=0.99465,Min=-0.99920,SAD=702.77356
+[2024-06-24::23:37:49] [DEBUG]: 	[ 0.9158  0.0663  0.3838 -0.369   0.373 ] ...  [ 0.8817  0.3684 -0.8702  0.7408  0.4028]
+[2024-06-24::23:37:49] [DEBUG]: output(plugin-impl)[0]:(32, 32)
+[2024-06-24::23:37:49] [DEBUG]: 	SumAbs=2.68372e+02,Var=0.10896,Max=0.99465,Min=-0.03997,SAD=374.41370
+[2024-06-24::23:37:49] [DEBUG]: 	[ 0.9158  0.0663  0.3838 -0.0148  0.373 ] ...  [ 0.8817  0.3684 -0.0348  0.7408  0.4028]
+[2024-06-24::23:37:49] [DEBUG]: output(cpu-impl)[0]:(32, 32)
+[2024-06-24::23:37:49] [DEBUG]: 	SumAbs=2.68372e+02,Var=0.10896,Max=0.99465,Min=-0.03997,SAD=374.41370
+[2024-06-24::23:37:49] [DEBUG]: 	[ 0.9158  0.0663  0.3838 -0.0148  0.373 ] ...  [ 0.8817  0.3684 -0.0348  0.7408  0.4028]
+[2024-06-24::23:37:49] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-24::23:37:49] [INFO]: Test 'customLeakyReLU':<shape=[32, 32],alpha=0.040000> finish!
+
+[2024-06-24::23:37:49] [INFO]: Test 'customLeakyReLU':<shape=[16, 16, 16],alpha=0.020000>
+[2024-06-24::23:37:49] [INFO]: Succeeded building engine!
+[2024-06-24::23:37:49] [DEBUG]: input[0]:(16, 16, 16)
+[2024-06-24::23:37:49] [DEBUG]: 	SumAbs=2.04770e+03,Var=0.33200,Max=0.99975,Min=-0.99981,SAD=2708.33643
+[2024-06-24::23:37:49] [DEBUG]: 	[ 0.2099  0.4647 -0.4931  0.201   0.6292] ...  [-0.9598 -0.7611  0.8801  0.1177  0.3729]
+[2024-06-24::23:37:49] [DEBUG]: output(plugin-impl)[0]:(16, 16, 16)
+[2024-06-24::23:37:49] [DEBUG]: 	SumAbs=1.04193e+03,Var=0.10566,Max=0.99975,Min=-0.02000,SAD=1384.88611
+[2024-06-24::23:37:49] [DEBUG]: 	[ 0.2099  0.4647 -0.0099  0.201   0.6292] ...  [-0.0192 -0.0152  0.8801  0.1177  0.3729]
+[2024-06-24::23:37:49] [DEBUG]: output(cpu-impl)[0]:(16, 16, 16)
+[2024-06-24::23:37:49] [DEBUG]: 	SumAbs=1.04193e+03,Var=0.10566,Max=0.99975,Min=-0.02000,SAD=1384.88611
+[2024-06-24::23:37:49] [DEBUG]: 	[ 0.2099  0.4647 -0.0099  0.201   0.6292] ...  [-0.0192 -0.0152  0.8801  0.1177  0.3729]
+[2024-06-24::23:37:49] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-24::23:37:49] [INFO]: Test 'customLeakyReLU':<shape=[16, 16, 16],alpha=0.020000> finish!
+
+[2024-06-24::23:37:49] [INFO]: Test 'customLeakyReLU':<shape=[8, 8, 8, 8],alpha=0.100000>
+[2024-06-24::23:37:49] [INFO]: Succeeded building engine!
+[2024-06-24::23:37:49] [DEBUG]: input[0]:(8, 8, 8, 8)
+[2024-06-24::23:37:49] [DEBUG]: 	SumAbs=2.03430e+03,Var=0.33086,Max=0.99951,Min=-0.99723,SAD=2721.03296
+[2024-06-24::23:37:49] [DEBUG]: 	[-0.2445  0.5262  0.7928  0.8204 -0.007 ] ...  [ 0.3761 -0.2521  0.2462  0.4129  0.3242]
+[2024-06-24::23:37:49] [DEBUG]: output(plugin-impl)[0]:(8, 8, 8, 8)
+[2024-06-24::23:37:49] [DEBUG]: 	SumAbs=1.09431e+03,Var=0.11492,Max=0.99951,Min=-0.09972,SAD=1470.07568
+[2024-06-24::23:37:49] [DEBUG]: 	[-0.0244  0.5262  0.7928  0.8204 -0.0007] ...  [ 0.3761 -0.0252  0.2462  0.4129  0.3242]
+[2024-06-24::23:37:49] [DEBUG]: output(cpu-impl)[0]:(8, 8, 8, 8)
+[2024-06-24::23:37:49] [DEBUG]: 	SumAbs=1.09431e+03,Var=0.11492,Max=0.99951,Min=-0.09972,SAD=1470.07568
+[2024-06-24::23:37:49] [DEBUG]: 	[-0.0244  0.5262  0.7928  0.8204 -0.0007] ...  [ 0.3761 -0.0252  0.2462  0.4129  0.3242]
+[2024-06-24::23:37:49] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-24::23:37:49] [INFO]: Test 'customLeakyReLU':<shape=[8, 8, 8, 8],alpha=0.100000> finish!
+
+[2024-06-24::23:37:50] [INFO]: All tests are passed!!

@@ -8,10 +8,11 @@ current_path = os.path.dirname(__file__)
 log          = current_path + "/../../logs/custom-plugin.log"
 test_logger, file_handler, console_handler = set_logger(log)
 
-def build_network(trtFile, shape, plugin):
-    # 从shared library中读取plugin
+def build_network(trtFile, shape, plugin : trt.tensorrt.IPluginV2):
+    
     logger = trt.Logger(trt.Logger.ERROR)
-    trt.init_libnvinfer_plugins(logger, '')
+    # 从shared library中读取plugin
+    trt.init_libnvinfer_plugins(logger, '') # C++中不需要也没有这个API
 
     if os.path.isfile(trtFile):
         with open(trtFile, "rb") as f:
@@ -53,17 +54,28 @@ def build_network(trtFile, shape, plugin):
 
 
 def inference(engine, shape):
+    # 获取输入输出张量的总数
     nIO         = engine.num_io_tensors
+    # 获取每个张量的名称
     lTensorName = [engine.get_tensor_name(i) for i in range(nIO)]
+    # 统计输入张量的数量
     nInput      = [engine.get_tensor_mode(lTensorName[i]) for i in range(nIO)].count(trt.TensorIOMode.INPUT)
 
     context     = engine.create_execution_context()
-    context.set_input_shape(lTensorName[0], shape)
+     # 设置输入张量的形状(这个案例只有一个输入张量)
+    for i in range(nInput):
+        # context.set_input_shape(lTensorName[i], shape[i])
+        context.set_input_shape(lTensorName[i], shape)
 
     # 初始化host端的数据，根据输入的shape大小来初始化值, 同时也把存储输出的空间存储下来
     bufferH     = []
-    # bufferH.append(np.arange(np.prod(shape), dtype=np.float32).reshape(shape))
-    bufferH.append((np.random.uniform(-1, 1, np.prod(shape)).astype(np.float32)).reshape(shape))
+    for i in range(nInput):
+        # 初始化第一个输入张量的数据，使用随机数(指定范围在-1~1之间)填充。
+        bufferH.append((np.random.uniform(-1, 1, np.prod(shape)).astype(np.float32)).reshape(shape))
+        # bufferH.append((np.random.uniform(-1, 1, np.prod(shape[i])).astype(np.float32)).reshape(shape[i]))
+        
+
+    # 对于每个输出张量，分配相应大小的空数组来存储结果。
     for i in range(nInput, nIO):
         bufferH.append(np.empty(context.get_tensor_shape(lTensorName[i]), dtype=trt.nptype(engine.get_tensor_dtype(lTensorName[i]))))
 
@@ -75,8 +87,10 @@ def inference(engine, shape):
     # H2D, enqueue, D2H执行推理，并把结果返回
     for i in range(nInput):
         cudart.cudaMemcpy(bufferD[i], bufferH[i].ctypes.data, bufferH[i].nbytes, cudart.cudaMemcpyKind.cudaMemcpyHostToDevice)
+    # 设置每个张量在设备端的地址
     for i in range(nIO):
         context.set_tensor_address(lTensorName[i], int(bufferD[i]))
+    # 异步执行推理
     context.execute_async_v3(0)
     for i in range(nInput, nIO):
         cudart.cudaMemcpy(bufferH[i].ctypes.data, bufferD[i], bufferH[i].nbytes, cudart.cudaMemcpyKind.cudaMemcpyDeviceToHost)
@@ -105,8 +119,10 @@ def printArrayInformation(x, info="", n=5):
         test_logger.debug()
         return
     test_logger.debug('%s:%s'%(info,str(x.shape)))
+    # 数组元素绝对值的总和，使用科学记数法表示|方差|最大值|最小值|绝对差总和
     test_logger.debug('\tSumAbs=%.5e,Var=%.5f,Max=%.5f,Min=%.5f,SAD=%.5f'%( \
         np.sum(abs(x)),np.var(x),np.max(x),np.min(x),np.sum(np.abs(np.diff(x.reshape(-1)))) ))
+    # 将数组x展平为一维数组，并记录数组前n个元素和后n个元素
     test_logger.debug('\t%s ...  %s'%(x.reshape(-1)[:n], x.reshape(-1)[-n:]))
 
 def check(a, b, weak=False, checkEpsilon=1e-5):
@@ -115,8 +131,8 @@ def check(a, b, weak=False, checkEpsilon=1e-5):
         b = b.astype(np.float32)
         res = np.all(np.abs(a - b) < checkEpsilon)
     else:
-        res = np.all(a == b)
-    diff0 = np.max(np.abs(a - b))
-    diff1 = np.max(np.abs(a - b) / (np.abs(b) + checkEpsilon))
+        res = np.all(a == b) # 必须严格相等才为 True
+    diff0 = np.max(np.abs(a - b)) # 最大绝对差异
+    diff1 = np.max(np.abs(a - b) / (np.abs(b) + checkEpsilon)) # 最大相对差异
     test_logger.info("check:%s, absDiff=%f, relDiff=%f" % (res, diff0, diff1))
     return res

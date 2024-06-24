@@ -2,3 +2,11 @@
 [2024-06-24::15:43:46] [WARNING]: warning
 [2024-06-24::15:43:46] [ERROR]: error
 [2024-06-24::15:43:46] [CRITICAL]: critical
+[2024-06-24::18:20:27] [INFO]: info
+[2024-06-24::18:20:27] [WARNING]: warning
+[2024-06-24::18:20:27] [ERROR]: error
+[2024-06-24::18:20:27] [CRITICAL]: critical
+[2024-06-24::18:24:32] [INFO] [File:logger.py, Line:50]: info
+[2024-06-24::18:24:32] [WARNING] [File:logger.py, Line:51]: warning
+[2024-06-24::18:24:32] [ERROR] [File:logger.py, Line:52]: error
+[2024-06-24::18:24:32] [CRITICAL] [File:logger.py, Line:53]: critical

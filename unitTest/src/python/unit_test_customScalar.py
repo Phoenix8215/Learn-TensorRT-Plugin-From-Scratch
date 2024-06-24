@@ -7,7 +7,7 @@ import logging
 from trt_model import test_logger, console_handler, file_handler
 from trt_model import build_network, inference, validation
 
-
+# cpu 实现
 def CustomScalarCPU(inputH, scalar, scale):
     return [(inputH[0] + scalar) * scale]
 

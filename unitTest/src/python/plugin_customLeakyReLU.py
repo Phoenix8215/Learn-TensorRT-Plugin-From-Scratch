@@ -12,6 +12,7 @@ class CustomLeakyReLUImpl(torch.autograd.Function):
 
     @staticmethod
     def forward(ctx, x, alpha):
+        return torch.where(x > 0, x, alpha * x)
         
 
 class CustomLeakyReLU(nn.Module):
