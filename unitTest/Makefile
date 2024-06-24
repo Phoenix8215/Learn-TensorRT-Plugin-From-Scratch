@@ -1,4 +1,3 @@
-CONFIG        :=  ../../config/Makefile.config
 CONFIG_LOCAL  :=  ./config/Makefile.config
 
 include $(CONFIG)
@@ -29,16 +28,16 @@ CUDAFLAGS     :=  --shared -Xcompiler -fPIC
 
 INCS          :=  -I $(CUDA_DIR)/include \
                   -I $(SRC_PATH) \
-				  -I $(OPENCV_INSTALL_DIR) \
-				  -I $(TENSORRT_INSTALL_DIR)/include \
-				  -I $(INC_PATH)
+									-I $(TENSORRT_INSTALL_DIR)/include \
+									-I $(INC_PATH) \
+									`pkg-config --cflags opencv4 2>/dev/null || pkg-config --cflags opencv`
 
 LIBS          :=  -L "$(CUDA_DIR)/lib64" \
-                  -L "$(TENSORRT_INSTALL_DIR)/lib" \
+									-L "$(TENSORRT_INSTALL_DIR)/lib" \
                   -lcudart -lcublas -lcudnn \
-				  -lnvinfer -lnvonnxparser\
-				  -lstdc++fs \
-				  `pkg-config --libs opencv4 2>/dev/null || pkg-config --libs opencv`
+									-lnvinfer -lnvonnxparser\
+									-lstdc++fs \
+									`pkg-config --libs opencv4 2>/dev/null || pkg-config --libs opencv`
 
 
 ifeq ($(DEBUG),1)
@@ -57,26 +56,33 @@ CUDAFLAGS     +=  -w
 CXXFLAGS      +=  -w
 endif
 
+.PHONY: all show clean $(TARGET_SO)
+
 all: 
 	$(MAKE) $(TARGET_SO)
 
-update: $(APP)
-	@echo finished updating $<
 
 $(TARGET_SO): $(APP_DEPS) $(APP_OBJS)
 	@$(CUCC) $(CUDAFLAGS) $(APP_OBJS) -o $@ $(LIBS) $(INCS)
-	@echo finished building custom_plugin.so
+	@echo finished building $(PLUGIN_NAME).so
 
 show: 
 	@echo $(BUILD_PATH)
+	@echo ------------
 	@echo $(APP_DEPS)
+	@echo ------------
+	@echo $(LIBS)
+	@echo ------------
 	@echo $(INCS)
+	@echo ------------
 	@echo $(APP_OBJS)
+	@echo ------------
 	@echo $(APP_MKS)
 
 clean:
-	rm -rf $(APP)
-	rm -rf build
+	-rm -rf build 😭
+	-rm -rf models/engine/*.engine 😭
+	-rm -rf lib/*.so 😭
 
 ifneq ($(MAKECMDGOALS), clean)
 -include $(APP_MKS)
@@ -103,4 +109,3 @@ $(BUILD_PATH)/%.cu.mk: $(SRC_PATH)%.cu
 	@mkdir -p $(BUILD_PATH)
 	@$(CUCC) -M $< -MF $@ -MT $(@:.cu.mk=.cu.o) $(CUDAFLAGS)
 
-.PHONY: all update show clean 

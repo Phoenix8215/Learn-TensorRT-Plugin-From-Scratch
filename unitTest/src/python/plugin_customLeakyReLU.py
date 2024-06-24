@@ -1,12 +1,9 @@
 import torch
 import torch.onnx
 import torch.nn as nn
-import onnxruntime
 import onnx
 import onnxsim
 import os
-import numpy as np
-from collections import OrderedDict
 
 class CustomLeakyReLUImpl(torch.autograd.Function):
     @staticmethod

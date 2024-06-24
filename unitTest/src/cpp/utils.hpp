@@ -7,7 +7,7 @@
 #include <vector>
 #include <map>
 #include <iostream>
-
+#include <iomanip>
 #define CUDA_CHECK(call)             __cudaCheck(call, __FILE__, __LINE__)
 #define LAST_KERNEL_CHECK(call)      __kernelCheck(__FILE__, __LINE__)
 
