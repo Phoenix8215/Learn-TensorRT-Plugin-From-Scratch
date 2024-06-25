@@ -5,30 +5,37 @@ import onnx
 import onnxsim
 import os
 
-class CustomScalarImpl(torch.autograd.Function):
+class MishImpl(torch.autograd.Function):
     @staticmethod
-    def symbolic(g, x, r, s):
-        return g.op("custom::customScalar", x, scalar_f=r, scale_f=s)
+    def symbolic(g, x):
+        return g.op("custom::Mish", x)
 
     @staticmethod
-    def forward(ctx, x, r, s):
-        return (x + r) * s
+    def forward(ctx, x):
+        # ctx.save_for_backward(x) # 保存前向传播的输入以备自动微分使用
+        return x * torch.tanh(torch.nn.functional.softplus(x))
 
-class CustomScalar(nn.Module):
-    def __init__(self, r, s):
-        super().__init__()
-        self.scalar = r
-        self.scale  = s
+    # @staticmethod
+    # def backward(ctx, grad_output):
+    #     x, = ctx.saved_tensors
+    #     sp = torch.nn.functional.softplus(x)
+    #     grad_sp = torch.exp(sp) / (1 + torch.exp(sp))
+    #     tanh_sp = torch.tanh(sp)
+    #     grad_tanh_sp = 1 - tanh_sp ** 2
+    #     grad_x = tanh_sp + x * grad_tanh_sp * grad_sp
+    #     return grad_output * grad_x
 
+
+class CustomMish(nn.Module):
     def forward(self, x):
-        return CustomScalarImpl.apply(x, self.scalar, self.scale)
+        return MishImpl.apply(x)
 
 
 class Model(torch.nn.Module):
     def __init__(self):
         super().__init__()
-        self.conv   = nn.Conv2d(1, 3, (3, 3), padding=1)
-        self.act    = CustomScalar(1, 10)
+        self.conv = nn.Conv2d(1, 3, (3, 3), padding=1)
+        self.act = CustomMish()
     
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
@@ -47,19 +54,20 @@ class Model(torch.nn.Module):
 def setup_seed(seed):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
-    # 强制 cuDNN 使用确定性的算法
     torch.backends.cudnn.deterministic = True
 
-def export_norm_onnx(input, model):
+def export_mish_onnx(input, model):
     current_path = os.path.dirname(__file__)
-    file = current_path + "/../../models/onnx/sample_customScalar.onnx"
+    file = os.path.join(current_path, "../../models/onnx/sample_mish.onnx")
     torch.onnx.export(
         model         = model, 
         args          = (input,),
         f             = file,
         input_names   = ["input0"],
         output_names  = ["output0"],
-        opset_version = 15)
+        opset_version = 15,
+        custom_opsets = {"custom": 1}
+    )
     print("Finished normal onnx export")
 
     # check the exported onnx model
@@ -95,6 +103,4 @@ if __name__ == "__main__":
     eval(input, model)
 
     # 导出onnx
-    export_norm_onnx(input, model);
-
-
+    export_mish_onnx(input, model)
