@@ -1,8 +1,8 @@
+#include "custom-BatchNormalization-plugin.hpp"
 #include <cuda_runtime_api.h>
 #include <cassert>
 #include <cstring>
 #include <vector>
-#include "custom-BatchNormalization-plugin.hpp"
 
 /* BatchNormalization的核函数接口部分 */
 void batchNormalizationKernelLauncher(const float* input, float* output, const float* scale, const float* bias, const float* mean, const float* variance, float epsilon, int n, int c, int h, int w, cudaStream_t stream);
@@ -10,6 +10,24 @@ void batchNormalizationKernelLauncher(const float* input, float* output, const f
 using namespace nvinfer1;
 
 namespace custom {
+
+// Write values into buffer
+template <typename Type, typename BufferType>
+void write(BufferType*& buffer, Type const& val) {
+    static_assert(sizeof(BufferType) == 1, "BufferType must be a 1 byte type.");
+    std::memcpy(buffer, &val, sizeof(Type));
+    buffer += sizeof(Type);
+}
+
+// Read values from buffer
+template <typename OutType, typename BufferType>
+OutType read(BufferType const*& buffer) {
+    static_assert(sizeof(BufferType) == 1, "BufferType must be a 1 byte type.");
+    OutType val{};
+    std::memcpy(&val, static_cast<void const*>(buffer), sizeof(OutType));
+    buffer += sizeof(OutType);
+    return val;
+}
 
 REGISTER_TENSORRT_PLUGIN(CustomBatchNormalizationPluginCreator);
 
@@ -23,17 +41,28 @@ CustomBatchNormalizationPlugin::CustomBatchNormalizationPlugin(const std::string
     : mName(name) {
     const char *d = static_cast<const char*>(buffer), *a = d;
     mEpsilon = read<float>(d);
-    size_t size = read<size_t>(d);
-    mScale.assign(d, d + size);
-    d += size * sizeof(float);
+    size_t size;
+
     size = read<size_t>(d);
-    mBias.assign(d, d + size);
+    mScale.resize(size);
+    std::memcpy(mScale.data(), d, size * sizeof(float));
     d += size * sizeof(float);
+
     size = read<size_t>(d);
-    mMean.assign(d, d + size);
+    mBias.resize(size);
+    std::memcpy(mBias.data(), d, size * sizeof(float));
     d += size * sizeof(float);
+
     size = read<size_t>(d);
-    mVariance.assign(d, d + size);
+    mMean.resize(size);
+    std::memcpy(mMean.data(), d, size * sizeof(float));
+    d += size * sizeof(float);
+
+    size = read<size_t>(d);
+    mVariance.resize(size);
+    std::memcpy(mVariance.data(), d, size * sizeof(float));
+    d += size * sizeof(float);
+
     assert(d == a + length);
 }
 
@@ -61,18 +90,23 @@ size_t CustomBatchNormalizationPlugin::getSerializationSize() const noexcept {
 void CustomBatchNormalizationPlugin::serialize(void* buffer) const noexcept {
     char *d = static_cast<char*>(buffer), *a = d;
     write(d, mEpsilon);
+
     write(d, mScale.size());
     std::memcpy(d, mScale.data(), mScale.size() * sizeof(float));
     d += mScale.size() * sizeof(float);
+
     write(d, mBias.size());
     std::memcpy(d, mBias.data(), mBias.size() * sizeof(float));
     d += mBias.size() * sizeof(float);
+
     write(d, mMean.size());
     std::memcpy(d, mMean.data(), mMean.size() * sizeof(float));
     d += mMean.size() * sizeof(float);
+
     write(d, mVariance.size());
     std::memcpy(d, mVariance.data(), mVariance.size() * sizeof(float));
     d += mVariance.size() * sizeof(float);
+
     assert(d == a + getSerializationSize());
 }
 
@@ -175,16 +209,16 @@ IPluginV2* CustomBatchNormalizationPluginCreator::createPlugin(const char* name,
     std::vector<float> scale, bias, mean, variance;
     const PluginField* fields = fc->fields;
     for (int i = 0; i < fc->nbFields; i++) {
-        if (strcmp(fields[i].name, "epsilon") == 0) {
-            epsilon = *(static_cast<const float*>(fields[i].data));
+        if (strcmp(fields[i].name, "mean") == 0) {
+            mean.assign(static_cast<const float*>(fields[i].data), static_cast<const float*>(fields[i].data) + fields[i].length);
+        } else if (strcmp(fields[i].name, "variance") == 0) {
+            variance.assign(static_cast<const float*>(fields[i].data), static_cast<const float*>(fields[i].data) + fields[i].length);
         } else if (strcmp(fields[i].name, "scale") == 0) {
             scale.assign(static_cast<const float*>(fields[i].data), static_cast<const float*>(fields[i].data) + fields[i].length);
         } else if (strcmp(fields[i].name, "bias") == 0) {
             bias.assign(static_cast<const float*>(fields[i].data), static_cast<const float*>(fields[i].data) + fields[i].length);
-        } else if (strcmp(fields[i].name, "mean") == 0) {
-            mean.assign(static_cast<const float*>(fields[i].data), static_cast<const float*>(fields[i].data) + fields[i].length);
-        } else if (strcmp(fields[i].name, "variance") == 0) {
-            variance.assign(static_cast<const float*>(fields[i].data), static_cast<const float*>(fields[i].data) + fields[i].length);
+        } else if (strcmp(fields[i].name, "epsilon") == 0) {
+            epsilon = *(static_cast<const float*>(fields[i].data));
         }
     }
     return new CustomBatchNormalizationPlugin(name, epsilon, scale, bias, mean, variance);

@@ -1,35 +1,46 @@
 #include <cuda_runtime.h>
-#include <math.h>
+#include <iostream>
+#include <vector>
+#include <cmath>
 
-__global__ void batchNormalizationKernel(const float* input, float* output, const float* scale, const float* bias, const float* mean, const float* variance, float epsilon, int n, int c, int h, int w)
-{
-    int index = blockIdx.x * blockDim.x + threadIdx.x;
-    int size = n * c * h * w;
-    if (index < size)
-    {
-        int n_stride = c * h * w;
-        int c_stride = h * w;
-        int h_stride = w;
-        
-        int n_idx = index / n_stride;
-        int c_idx = (index % n_stride) / c_stride;
-        int h_idx = (index % c_stride) / h_stride;
-        int w_idx = index % w;
+// CUDA 错误检查宏
+#define CUDA_CHECK(call) \
+    do { \
+        cudaError_t err = call; \
+        if (err != cudaSuccess) { \
+            std::cerr << "CUDA error in " << __FILE__ << " at line " << __LINE__ << ": " << cudaGetErrorString(err) << std::endl; \
+            exit(err); \
+        } \
+    } while (0)
 
-        float mean_val = mean[c_idx];
-        float var_val = variance[c_idx];
-        float scale_val = scale[c_idx];
-        float bias_val = bias[c_idx];
+// CUDA 核函数和 Launcher
+__global__ void batchNormalizationKernel(const float* input, float* output, const float* scale, const float* bias, const float* mean, const float* variance, float epsilon, int n, int c, int h, int w);
 
-        float norm_val = (input[index] - mean_val) / sqrtf(var_val + epsilon);
-        output[index] = norm_val * scale_val + bias_val;
-    }
-}
-
-void batchNormalizationKernelLauncher(const float* input, float* output, const float* scale, const float* bias, const float* mean, const float* variance, float epsilon, int n, int c, int h, int w, cudaStream_t stream)
-{
+void batchNormalizationKernelLauncher(const float* input, float* output, const float* scale, const float* bias, const float* mean, const float* variance, float epsilon, int n, int c, int h, int w, cudaStream_t stream) {
     int size = n * c * h * w;
     int blockSize = 256;
-    int numBlocks = (size + blockSize - 1) / blockSize;
-    batchNormalizationKernel<<<numBlocks, blockSize, 0, stream>>>(input, output, scale, bias, mean, variance, epsilon, n, c, h, w);
+    int gridSize = (size + blockSize - 1) / blockSize;
+    batchNormalizationKernel<<<gridSize, blockSize, 0, stream>>>(input, output, scale, bias, mean, variance, epsilon, n, c, h, w);
+    CUDA_CHECK(cudaGetLastError());
+}
+
+// 核函数实现
+__global__ void batchNormalizationKernel(const float* input, float* output, const float* scale, const float* bias, const float* mean, const float* variance, float epsilon, int n, int c, int h, int w) {
+    int index = blockIdx.x * blockDim.x + threadIdx.x;
+    int size = n * c * h * w;
+    if (index < size) {
+        int nhw = h * w;
+        int chw = c * nhw;
+        int n_idx = index / chw;
+        int c_idx = (index % chw) / nhw;
+        int hw_idx = index % nhw;
+
+        float x = input[index];
+        float m = mean[c_idx];
+        float v = variance[c_idx];
+        float gamma = scale[c_idx];
+        float beta = bias[c_idx];
+
+        output[index] = gamma * ((x - m) / sqrtf(v + epsilon)) + beta;
+    }
 }

@@ -1,5 +1,30 @@
 build/custom-BatchNormalization-plugin.cpp.o: \
  src/cpp/custom-BatchNormalization-plugin.cpp /usr/include/stdc-predef.h \
+ src/cpp/custom-BatchNormalization-plugin.hpp \
+ /usr/include/aarch64-linux-gnu/NvInfer.h \
+ /usr/include/aarch64-linux-gnu/NvInferLegacyDims.h \
+ /usr/include/aarch64-linux-gnu/NvInferRuntimeCommon.h \
+ /usr/include/aarch64-linux-gnu/NvInferVersion.h \
+ /usr/include/c++/9/cstddef \
+ /usr/include/aarch64-linux-gnu/c++/9/bits/c++config.h \
+ /usr/include/aarch64-linux-gnu/c++/9/bits/os_defines.h \
+ /usr/include/features.h /usr/include/aarch64-linux-gnu/sys/cdefs.h \
+ /usr/include/aarch64-linux-gnu/bits/wordsize.h \
+ /usr/include/aarch64-linux-gnu/bits/long-double.h \
+ /usr/include/aarch64-linux-gnu/gnu/stubs.h \
+ /usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h \
+ /usr/include/aarch64-linux-gnu/c++/9/bits/cpu_defines.h \
+ /usr/lib/gcc/aarch64-linux-gnu/9/include/stddef.h \
+ /usr/include/c++/9/cstdint \
+ /usr/lib/gcc/aarch64-linux-gnu/9/include/stdint.h /usr/include/stdint.h \
+ /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
+ /usr/include/aarch64-linux-gnu/bits/types.h \
+ /usr/include/aarch64-linux-gnu/bits/timesize.h \
+ /usr/include/aarch64-linux-gnu/bits/typesizes.h \
+ /usr/include/aarch64-linux-gnu/bits/time64.h \
+ /usr/include/aarch64-linux-gnu/bits/wchar.h \
+ /usr/include/aarch64-linux-gnu/bits/stdint-intn.h \
+ /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h \
  /usr/local/cuda-11.4/include/cuda_runtime_api.h \
  /usr/local/cuda-11.4/include/crt/host_defines.h \
  /usr/local/cuda-11.4/include/builtin_types.h \
@@ -8,34 +33,20 @@ build/custom-BatchNormalization-plugin.cpp.o: \
  /usr/local/cuda-11.4/include/vector_types.h \
  /usr/lib/gcc/aarch64-linux-gnu/9/include/limits.h \
  /usr/lib/gcc/aarch64-linux-gnu/9/include/syslimits.h \
- /usr/include/limits.h \
- /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
- /usr/include/features.h /usr/include/aarch64-linux-gnu/sys/cdefs.h \
- /usr/include/aarch64-linux-gnu/bits/wordsize.h \
- /usr/include/aarch64-linux-gnu/bits/long-double.h \
- /usr/include/aarch64-linux-gnu/gnu/stubs.h \
- /usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h \
- /usr/include/aarch64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/limits.h /usr/include/aarch64-linux-gnu/bits/posix1_lim.h \
  /usr/include/aarch64-linux-gnu/bits/local_lim.h \
  /usr/include/linux/limits.h \
  /usr/include/aarch64-linux-gnu/bits/posix2_lim.h \
  /usr/include/aarch64-linux-gnu/bits/xopen_lim.h \
  /usr/include/aarch64-linux-gnu/bits/uio_lim.h \
- /usr/lib/gcc/aarch64-linux-gnu/9/include/stddef.h \
  /usr/local/cuda-11.4/include/surface_types.h \
  /usr/local/cuda-11.4/include/texture_types.h \
  /usr/local/cuda-11.4/include/cuda_device_runtime_api.h \
- /usr/include/c++/9/cassert \
- /usr/include/aarch64-linux-gnu/c++/9/bits/c++config.h \
- /usr/include/aarch64-linux-gnu/c++/9/bits/os_defines.h \
- /usr/include/aarch64-linux-gnu/c++/9/bits/cpu_defines.h \
- /usr/include/assert.h /usr/include/c++/9/cstring /usr/include/string.h \
- /usr/include/aarch64-linux-gnu/bits/types/locale_t.h \
- /usr/include/aarch64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/strings.h \
- /usr/include/aarch64-linux-gnu/bits/strings_fortified.h \
- /usr/include/aarch64-linux-gnu/bits/string_fortified.h \
- /usr/include/c++/9/vector /usr/include/c++/9/bits/stl_algobase.h \
+ /usr/include/aarch64-linux-gnu/NvInferRuntime.h \
+ /usr/include/aarch64-linux-gnu/NvInferImpl.h /usr/include/c++/9/string \
+ /usr/include/c++/9/bits/stringfwd.h /usr/include/c++/9/bits/memoryfwd.h \
+ /usr/include/c++/9/bits/char_traits.h \
+ /usr/include/c++/9/bits/stl_algobase.h \
  /usr/include/c++/9/bits/functexcept.h \
  /usr/include/c++/9/bits/exception_defines.h \
  /usr/include/c++/9/bits/cpp_type_traits.h \
@@ -49,6 +60,18 @@ build/custom-BatchNormalization-plugin.cpp.o: \
  /usr/include/c++/9/bits/stl_iterator.h \
  /usr/include/c++/9/bits/ptr_traits.h /usr/include/c++/9/debug/debug.h \
  /usr/include/c++/9/bits/predefined_ops.h \
+ /usr/include/c++/9/bits/postypes.h /usr/include/c++/9/cwchar \
+ /usr/include/wchar.h /usr/include/aarch64-linux-gnu/bits/floatn.h \
+ /usr/include/aarch64-linux-gnu/bits/floatn-common.h \
+ /usr/lib/gcc/aarch64-linux-gnu/9/include/stdarg.h \
+ /usr/include/aarch64-linux-gnu/bits/types/wint_t.h \
+ /usr/include/aarch64-linux-gnu/bits/types/mbstate_t.h \
+ /usr/include/aarch64-linux-gnu/bits/types/__mbstate_t.h \
+ /usr/include/aarch64-linux-gnu/bits/types/__FILE.h \
+ /usr/include/aarch64-linux-gnu/bits/types/FILE.h \
+ /usr/include/aarch64-linux-gnu/bits/types/locale_t.h \
+ /usr/include/aarch64-linux-gnu/bits/types/__locale_t.h \
+ /usr/include/aarch64-linux-gnu/bits/wchar2.h \
  /usr/include/c++/9/bits/allocator.h \
  /usr/include/aarch64-linux-gnu/c++/9/bits/c++allocator.h \
  /usr/include/c++/9/ext/new_allocator.h /usr/include/c++/9/new \
@@ -57,44 +80,6 @@ build/custom-BatchNormalization-plugin.cpp.o: \
  /usr/include/c++/9/bits/cxxabi_init_exception.h \
  /usr/include/c++/9/typeinfo /usr/include/c++/9/bits/hash_bytes.h \
  /usr/include/c++/9/bits/nested_exception.h \
- /usr/include/c++/9/bits/memoryfwd.h \
- /usr/include/c++/9/bits/stl_construct.h \
- /usr/include/c++/9/ext/alloc_traits.h \
- /usr/include/c++/9/bits/alloc_traits.h \
- /usr/include/c++/9/bits/stl_uninitialized.h \
- /usr/include/c++/9/bits/stl_vector.h /usr/include/c++/9/initializer_list \
- /usr/include/c++/9/bits/stl_bvector.h \
- /usr/include/c++/9/bits/functional_hash.h \
- /usr/include/c++/9/bits/range_access.h \
- /usr/include/c++/9/bits/vector.tcc \
- src/cpp/custom-BatchNormalization-plugin.hpp \
- /usr/include/aarch64-linux-gnu/NvInfer.h \
- /usr/include/aarch64-linux-gnu/NvInferLegacyDims.h \
- /usr/include/aarch64-linux-gnu/NvInferRuntimeCommon.h \
- /usr/include/aarch64-linux-gnu/NvInferVersion.h \
- /usr/include/c++/9/cstddef /usr/include/c++/9/cstdint \
- /usr/lib/gcc/aarch64-linux-gnu/9/include/stdint.h /usr/include/stdint.h \
- /usr/include/aarch64-linux-gnu/bits/types.h \
- /usr/include/aarch64-linux-gnu/bits/timesize.h \
- /usr/include/aarch64-linux-gnu/bits/typesizes.h \
- /usr/include/aarch64-linux-gnu/bits/time64.h \
- /usr/include/aarch64-linux-gnu/bits/wchar.h \
- /usr/include/aarch64-linux-gnu/bits/stdint-intn.h \
- /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h \
- /usr/include/aarch64-linux-gnu/NvInferRuntime.h \
- /usr/include/aarch64-linux-gnu/NvInferImpl.h /usr/include/c++/9/string \
- /usr/include/c++/9/bits/stringfwd.h \
- /usr/include/c++/9/bits/char_traits.h /usr/include/c++/9/bits/postypes.h \
- /usr/include/c++/9/cwchar /usr/include/wchar.h \
- /usr/include/aarch64-linux-gnu/bits/floatn.h \
- /usr/include/aarch64-linux-gnu/bits/floatn-common.h \
- /usr/lib/gcc/aarch64-linux-gnu/9/include/stdarg.h \
- /usr/include/aarch64-linux-gnu/bits/types/wint_t.h \
- /usr/include/aarch64-linux-gnu/bits/types/mbstate_t.h \
- /usr/include/aarch64-linux-gnu/bits/types/__mbstate_t.h \
- /usr/include/aarch64-linux-gnu/bits/types/__FILE.h \
- /usr/include/aarch64-linux-gnu/bits/types/FILE.h \
- /usr/include/aarch64-linux-gnu/bits/wchar2.h \
  /usr/include/c++/9/bits/localefwd.h \
  /usr/include/aarch64-linux-gnu/c++/9/bits/c++locale.h \
  /usr/include/c++/9/clocale /usr/include/locale.h \
@@ -106,6 +91,8 @@ build/custom-BatchNormalization-plugin.cpp.o: \
  /usr/include/c++/9/bits/cxxabi_forced.h \
  /usr/include/c++/9/bits/stl_function.h \
  /usr/include/c++/9/backward/binders.h \
+ /usr/include/c++/9/bits/range_access.h \
+ /usr/include/c++/9/initializer_list \
  /usr/include/c++/9/bits/basic_string.h \
  /usr/include/c++/9/ext/atomicity.h \
  /usr/include/aarch64-linux-gnu/c++/9/bits/gthr.h \
@@ -131,6 +118,8 @@ build/custom-BatchNormalization-plugin.cpp.o: \
  /usr/include/aarch64-linux-gnu/bits/struct_rwlock.h \
  /usr/include/aarch64-linux-gnu/bits/setjmp.h \
  /usr/include/aarch64-linux-gnu/c++/9/bits/atomic_word.h \
+ /usr/include/c++/9/ext/alloc_traits.h \
+ /usr/include/c++/9/bits/alloc_traits.h \
  /usr/include/c++/9/ext/string_conversions.h /usr/include/c++/9/cstdlib \
  /usr/include/stdlib.h /usr/include/aarch64-linux-gnu/bits/waitflags.h \
  /usr/include/aarch64-linux-gnu/bits/waitstatus.h \
@@ -159,6 +148,15 @@ build/custom-BatchNormalization-plugin.cpp.o: \
  /usr/include/linux/errno.h /usr/include/aarch64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/aarch64-linux-gnu/bits/types/error_t.h \
- /usr/include/c++/9/bits/basic_string.tcc \
+ /usr/include/c++/9/bits/functional_hash.h \
+ /usr/include/c++/9/bits/basic_string.tcc /usr/include/c++/9/vector \
+ /usr/include/c++/9/bits/stl_construct.h \
+ /usr/include/c++/9/bits/stl_uninitialized.h \
+ /usr/include/c++/9/bits/stl_vector.h \
+ /usr/include/c++/9/bits/stl_bvector.h /usr/include/c++/9/bits/vector.tcc \
  /usr/include/aarch64-linux-gnu/NvInferRuntime.h \
- /usr/include/aarch64-linux-gnu/NvInferRuntimeCommon.h
+ /usr/include/aarch64-linux-gnu/NvInferRuntimeCommon.h \
+ /usr/include/c++/9/cassert /usr/include/assert.h \
+ /usr/include/c++/9/cstring /usr/include/string.h /usr/include/strings.h \
+ /usr/include/aarch64-linux-gnu/bits/strings_fortified.h \
+ /usr/include/aarch64-linux-gnu/bits/string_fortified.h
