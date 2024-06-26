@@ -286,3 +286,133 @@
 [2024-06-25::15:55:44] [INFO]: Starting unit test...
 [2024-06-25::15:55:44] [INFO]: Test 'customBatchNormalization':<shape=[32, 3],epsilon=0.000010>
 [2024-06-25::15:55:46] [INFO]: Succeeded loading engine!
+[2024-06-25::19:47:16] [INFO]: Starting unit test...
+[2024-06-25::19:47:16] [INFO]: Test 'customLeakyReLU':<shape=[32],alpha=0.010000>
+[2024-06-25::19:47:22] [INFO]: Succeeded building engine!
+[2024-06-25::19:47:22] [DEBUG]: input[0]:(32,)
+[2024-06-25::19:47:22] [DEBUG]: 	SumAbs=1.74826e+01,Var=0.35308,Max=0.93652,Min=-0.99977,SAD=21.38007
+[2024-06-25::19:47:22] [DEBUG]: 	[-0.166   0.4406 -0.9998 -0.3953 -0.7065] ...  [-0.9219 -0.6603  0.7563 -0.8033 -0.1578]
+[2024-06-25::19:47:22] [DEBUG]: output(plugin-impl)[0]:(32,)
+[2024-06-25::19:47:22] [DEBUG]: 	SumAbs=6.43579e+00,Var=0.09320,Max=0.93652,Min=-0.01000,SAD=9.29268
+[2024-06-25::19:47:22] [DEBUG]: 	[-0.0017  0.4406 -0.01   -0.004  -0.0071] ...  [-0.0092 -0.0066  0.7563 -0.008  -0.0016]
+[2024-06-25::19:47:22] [DEBUG]: output(cpu-impl)[0]:(32,)
+[2024-06-25::19:47:22] [DEBUG]: 	SumAbs=6.43579e+00,Var=0.09320,Max=0.93652,Min=-0.01000,SAD=9.29268
+[2024-06-25::19:47:22] [DEBUG]: 	[-0.0017  0.4406 -0.01   -0.004  -0.0071] ...  [-0.0092 -0.0066  0.7563 -0.008  -0.0016]
+[2024-06-25::19:47:22] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-25::19:47:22] [INFO]: Test 'customLeakyReLU':<shape=[32],alpha=0.010000> finish!
+
+[2024-06-25::19:47:22] [INFO]: Test 'customLeakyReLU':<shape=[32, 32],alpha=0.040000>
+[2024-06-25::19:47:22] [INFO]: Succeeded building engine!
+[2024-06-25::19:47:22] [DEBUG]: input[0]:(32, 32)
+[2024-06-25::19:47:22] [DEBUG]: 	SumAbs=5.10871e+02,Var=0.33412,Max=0.99465,Min=-0.99920,SAD=702.77356
+[2024-06-25::19:47:22] [DEBUG]: 	[ 0.9158  0.0663  0.3838 -0.369   0.373 ] ...  [ 0.8817  0.3684 -0.8702  0.7408  0.4028]
+[2024-06-25::19:47:22] [DEBUG]: output(plugin-impl)[0]:(32, 32)
+[2024-06-25::19:47:22] [DEBUG]: 	SumAbs=2.68372e+02,Var=0.10896,Max=0.99465,Min=-0.03997,SAD=374.41370
+[2024-06-25::19:47:22] [DEBUG]: 	[ 0.9158  0.0663  0.3838 -0.0148  0.373 ] ...  [ 0.8817  0.3684 -0.0348  0.7408  0.4028]
+[2024-06-25::19:47:22] [DEBUG]: output(cpu-impl)[0]:(32, 32)
+[2024-06-25::19:47:22] [DEBUG]: 	SumAbs=2.68372e+02,Var=0.10896,Max=0.99465,Min=-0.03997,SAD=374.41370
+[2024-06-25::19:47:22] [DEBUG]: 	[ 0.9158  0.0663  0.3838 -0.0148  0.373 ] ...  [ 0.8817  0.3684 -0.0348  0.7408  0.4028]
+[2024-06-25::19:47:22] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-25::19:47:22] [INFO]: Test 'customLeakyReLU':<shape=[32, 32],alpha=0.040000> finish!
+
+[2024-06-25::19:47:22] [INFO]: Test 'customLeakyReLU':<shape=[16, 16, 16],alpha=0.020000>
+[2024-06-25::19:47:22] [INFO]: Succeeded building engine!
+[2024-06-25::19:47:22] [DEBUG]: input[0]:(16, 16, 16)
+[2024-06-25::19:47:22] [DEBUG]: 	SumAbs=2.04770e+03,Var=0.33200,Max=0.99975,Min=-0.99981,SAD=2708.33643
+[2024-06-25::19:47:22] [DEBUG]: 	[ 0.2099  0.4647 -0.4931  0.201   0.6292] ...  [-0.9598 -0.7611  0.8801  0.1177  0.3729]
+[2024-06-25::19:47:22] [DEBUG]: output(plugin-impl)[0]:(16, 16, 16)
+[2024-06-25::19:47:22] [DEBUG]: 	SumAbs=1.04193e+03,Var=0.10566,Max=0.99975,Min=-0.02000,SAD=1384.88611
+[2024-06-25::19:47:22] [DEBUG]: 	[ 0.2099  0.4647 -0.0099  0.201   0.6292] ...  [-0.0192 -0.0152  0.8801  0.1177  0.3729]
+[2024-06-25::19:47:22] [DEBUG]: output(cpu-impl)[0]:(16, 16, 16)
+[2024-06-25::19:47:22] [DEBUG]: 	SumAbs=1.04193e+03,Var=0.10566,Max=0.99975,Min=-0.02000,SAD=1384.88611
+[2024-06-25::19:47:22] [DEBUG]: 	[ 0.2099  0.4647 -0.0099  0.201   0.6292] ...  [-0.0192 -0.0152  0.8801  0.1177  0.3729]
+[2024-06-25::19:47:22] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-25::19:47:22] [INFO]: Test 'customLeakyReLU':<shape=[16, 16, 16],alpha=0.020000> finish!
+
+[2024-06-25::19:47:22] [INFO]: Test 'customLeakyReLU':<shape=[8, 8, 8, 8],alpha=0.100000>
+[2024-06-25::19:47:22] [INFO]: Succeeded building engine!
+[2024-06-25::19:47:22] [DEBUG]: input[0]:(8, 8, 8, 8)
+[2024-06-25::19:47:22] [DEBUG]: 	SumAbs=2.03430e+03,Var=0.33086,Max=0.99951,Min=-0.99723,SAD=2721.03296
+[2024-06-25::19:47:22] [DEBUG]: 	[-0.2445  0.5262  0.7928  0.8204 -0.007 ] ...  [ 0.3761 -0.2521  0.2462  0.4129  0.3242]
+[2024-06-25::19:47:22] [DEBUG]: output(plugin-impl)[0]:(8, 8, 8, 8)
+[2024-06-25::19:47:22] [DEBUG]: 	SumAbs=1.09431e+03,Var=0.11492,Max=0.99951,Min=-0.09972,SAD=1470.07568
+[2024-06-25::19:47:22] [DEBUG]: 	[-0.0244  0.5262  0.7928  0.8204 -0.0007] ...  [ 0.3761 -0.0252  0.2462  0.4129  0.3242]
+[2024-06-25::19:47:22] [DEBUG]: output(cpu-impl)[0]:(8, 8, 8, 8)
+[2024-06-25::19:47:22] [DEBUG]: 	SumAbs=1.09431e+03,Var=0.11492,Max=0.99951,Min=-0.09972,SAD=1470.07568
+[2024-06-25::19:47:22] [DEBUG]: 	[-0.0244  0.5262  0.7928  0.8204 -0.0007] ...  [ 0.3761 -0.0252  0.2462  0.4129  0.3242]
+[2024-06-25::19:47:22] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-25::19:47:22] [INFO]: Test 'customLeakyReLU':<shape=[8, 8, 8, 8],alpha=0.100000> finish!
+
+[2024-06-25::19:47:22] [INFO]: All tests are passed!!
+[2024-06-25::19:47:31] [INFO]: Starting unit test...
+[2024-06-25::19:47:31] [INFO]: Test 'customBatchNormalization':<shape=[32, 3],epsilon=0.000010>
+[2024-06-25::19:47:33] [INFO]: Succeeded loading engine!
+[2024-06-25::19:56:26] [INFO]: Starting unit test...
+[2024-06-25::19:56:26] [INFO]: Test 'customBatchNormalization':<shape=[32, 3],epsilon=0.000010>
+[2024-06-25::19:56:31] [INFO]: Succeeded building engine!
+[2024-06-25::20:07:01] [INFO]: Starting unit test...
+[2024-06-25::20:07:01] [INFO]: Test 'customBatchNormalization':<shape=[32, 3],epsilon=0.000010>
+[2024-06-25::20:07:06] [INFO]: Succeeded building engine!
+[2024-06-25::20:11:10] [INFO]: Starting unit test...
+[2024-06-25::20:11:10] [INFO]: Test 'customBatchNormalization':<shape=[32, 3],epsilon=0.000010>
+[2024-06-25::20:11:12] [INFO]: Succeeded loading engine!
+[2024-06-25::20:18:48] [INFO]: Starting unit test...
+[2024-06-25::20:18:48] [INFO]: Test 'customBatchNormalization':<shape=[32, 3],epsilon=0.000010>
+[2024-06-25::20:18:50] [INFO]: Succeeded loading engine!
+[2024-06-25::20:21:59] [INFO]: Starting unit test...
+[2024-06-25::20:21:59] [INFO]: Test 'customBatchNormalization':<shape=[16, 16, 16, 16],epsilon=0.000010>
+[2024-06-25::20:22:04] [INFO]: Succeeded building engine!
+[2024-06-25::20:22:04] [INFO]: check:False, absDiff=nan, relDiff=nan
+[2024-06-25::20:22:04] [ERROR]: Test 'customBatchNormalization':<shape=[16, 16, 16, 16],epsilon=0.000010> failed!
+
+[2024-06-25::20:22:54] [INFO]: Starting unit test...
+[2024-06-25::20:22:54] [INFO]: Test 'customBatchNormalization':<shape=[16, 16, 16, 16],epsilon=0.000010>
+[2024-06-25::20:22:56] [INFO]: Succeeded loading engine!
+[2024-06-25::20:22:57] [INFO]: check:False, absDiff=nan, relDiff=nan
+[2024-06-25::20:22:57] [ERROR]: Test 'customBatchNormalization':<shape=[16, 16, 16, 16],epsilon=0.000010> failed!
+
+[2024-06-25::20:24:10] [INFO]: Starting unit test...
+[2024-06-25::20:24:10] [INFO]: Test 'customBatchNormalization':<shape=[2, 16, 4, 4],epsilon=0.000010>
+[2024-06-25::20:24:12] [INFO]: Succeeded loading engine!
+[2024-06-25::20:30:32] [INFO]: Starting unit test...
+[2024-06-25::20:30:32] [INFO]: Test 'customBatchNormalization':<shape=[2, 16, 4, 4],epsilon=0.000010>
+[2024-06-25::20:30:34] [INFO]: Succeeded loading engine!
+[2024-06-25::20:30:34] [INFO]: check:False, absDiff=330967954264195884944562767540183367680.000000, relDiff=inf
+[2024-06-25::20:30:34] [ERROR]: Test 'customBatchNormalization':<shape=[2, 16, 4, 4],epsilon=0.000010> failed!
+
+[2024-06-25::20:39:25] [INFO]: Starting unit test...
+[2024-06-25::20:39:25] [INFO]: Test 'customBatchNormalization':<shape=[2, 16, 4, 4],epsilon=0.000010>
+[2024-06-25::20:39:27] [INFO]: Succeeded loading engine!
+[2024-06-25::20:39:27] [INFO]: check:False, absDiff=nan, relDiff=nan
+[2024-06-25::20:39:27] [ERROR]: Test 'customBatchNormalization':<shape=[2, 16, 4, 4],epsilon=0.000010> failed!
+
+[2024-06-25::20:40:51] [INFO]: Starting unit test...
+[2024-06-25::20:40:51] [INFO]: Test 'customBatchNormalization':<shape=[1, 16, 4, 4],epsilon=0.000010>
+[2024-06-25::20:40:53] [INFO]: Succeeded loading engine!
+[2024-06-25::20:40:53] [INFO]: check:False, absDiff=311770815833616408101660085775979511808.000000, relDiff=inf
+[2024-06-25::20:40:53] [ERROR]: Test 'customBatchNormalization':<shape=[1, 16, 4, 4],epsilon=0.000010> failed!
+
+[2024-06-25::20:57:19] [INFO]: Starting unit test...
+[2024-06-25::20:57:19] [INFO]: Test 'customBatchNormalization':<shape=[16, 16, 4, 4],epsilon=0.000010>
+[2024-06-25::20:57:21] [INFO]: Succeeded loading engine!
+[2024-06-25::20:57:21] [INFO]: check:False, absDiff=nan, relDiff=nan
+[2024-06-25::20:57:21] [ERROR]: Test 'customBatchNormalization':<shape=[16, 16, 4, 4],epsilon=0.000010> failed!
+
+[2024-06-25::20:57:59] [INFO]: Starting unit test...
+[2024-06-25::20:57:59] [INFO]: Test 'customBatchNormalization':<shape=[1, 16, 4, 4],epsilon=0.000010>
+[2024-06-25::20:58:01] [INFO]: Succeeded loading engine!
+[2024-06-25::20:58:01] [INFO]: check:False, absDiff=311770815833616408101660085775979511808.000000, relDiff=inf
+[2024-06-25::20:58:01] [ERROR]: Test 'customBatchNormalization':<shape=[1, 16, 4, 4],epsilon=0.000010> failed!
+
+[2024-06-25::20:58:27] [INFO]: Starting unit test...
+[2024-06-25::20:58:27] [INFO]: Test 'customBatchNormalization':<shape=[2, 16, 4, 4],epsilon=0.000010>
+[2024-06-25::20:58:29] [INFO]: Succeeded loading engine!
+[2024-06-25::20:58:30] [INFO]: check:False, absDiff=nan, relDiff=nan
+[2024-06-25::20:58:30] [ERROR]: Test 'customBatchNormalization':<shape=[2, 16, 4, 4],epsilon=0.000010> failed!
+
+[2024-06-25::21:04:41] [INFO]: Starting unit test...
+[2024-06-25::21:04:41] [INFO]: Test 'customBatchNormalization':<shape=[2, 16, 4, 4],epsilon=0.000010>
+[2024-06-25::21:04:43] [INFO]: Succeeded loading engine!
+[2024-06-25::21:04:44] [INFO]: check:False, absDiff=nan, relDiff=nan
+[2024-06-25::21:04:44] [ERROR]: Test 'customBatchNormalization':<shape=[2, 16, 4, 4],epsilon=0.000010> failed!
+

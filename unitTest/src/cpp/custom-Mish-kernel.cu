@@ -17,7 +17,7 @@ __global__ void mishKernel(const float* inputs, float* outputs, int nElements)
 
 void mishKernelLauncher(const float* inputs, float* outputs, int nElements, cudaStream_t stream)
 {
-    int blockSize = 256;
-    int gridSize = (nElements + blockSize - 1) / blockSize;
+    dim3 blockSize(256, 1, 1);
+    dim3 gridSize(ceil(float(nElements) / 256), 1, 1);
     mishKernel<<<gridSize, blockSize, 0, stream>>>(inputs, outputs, nElements);
 }

@@ -74,7 +74,7 @@ def inference(engine, shape):
         bufferH.append((np.random.uniform(-1, 1, np.prod(shape)).astype(np.float32)).reshape(shape))
         # bufferH.append((np.random.uniform(-1, 1, np.prod(shape[i])).astype(np.float32)).reshape(shape[i]))
         
-
+    print(f"nInput : {nInput}")
     # 对于每个输出张量，分配相应大小的空数组来存储结果。
     for i in range(nInput, nIO):
         bufferH.append(np.empty(context.get_tensor_shape(lTensorName[i]), dtype=trt.nptype(engine.get_tensor_dtype(lTensorName[i]))))
