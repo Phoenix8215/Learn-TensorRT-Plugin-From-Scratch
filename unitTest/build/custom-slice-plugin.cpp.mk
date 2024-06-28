@@ -1,7 +1,7 @@
-build/custom-BatchNormalization-plugin.cpp.o: \
- src/cpp/custom-BatchNormalization-plugin.cpp /usr/include/stdc-predef.h \
- src/cpp/custom-BatchNormalization-plugin.hpp \
- /usr/include/aarch64-linux-gnu/NvInfer.h \
+build/custom-slice-plugin.cpp.o: src/cpp/custom-slice-plugin.cpp \
+ /usr/include/stdc-predef.h src/cpp/custom-slice-plugin.hpp \
+ /usr/include/aarch64-linux-gnu/NvInferRuntime.h \
+ /usr/include/aarch64-linux-gnu/NvInferImpl.h \
  /usr/include/aarch64-linux-gnu/NvInferLegacyDims.h \
  /usr/include/aarch64-linux-gnu/NvInferRuntimeCommon.h \
  /usr/include/aarch64-linux-gnu/NvInferVersion.h \
@@ -42,9 +42,11 @@ build/custom-BatchNormalization-plugin.cpp.o: \
  /usr/local/cuda-11.4/include/surface_types.h \
  /usr/local/cuda-11.4/include/texture_types.h \
  /usr/local/cuda-11.4/include/cuda_device_runtime_api.h \
+ /usr/include/aarch64-linux-gnu/NvInferRuntimeCommon.h \
+ /usr/include/aarch64-linux-gnu/NvInfer.h \
  /usr/include/aarch64-linux-gnu/NvInferRuntime.h \
- /usr/include/aarch64-linux-gnu/NvInferImpl.h /usr/include/c++/9/string \
- /usr/include/c++/9/bits/stringfwd.h /usr/include/c++/9/bits/memoryfwd.h \
+ /usr/include/c++/9/string /usr/include/c++/9/bits/stringfwd.h \
+ /usr/include/c++/9/bits/memoryfwd.h \
  /usr/include/c++/9/bits/char_traits.h \
  /usr/include/c++/9/bits/stl_algobase.h \
  /usr/include/c++/9/bits/functexcept.h \
@@ -154,12 +156,10 @@ build/custom-BatchNormalization-plugin.cpp.o: \
  /usr/include/c++/9/bits/stl_uninitialized.h \
  /usr/include/c++/9/bits/stl_vector.h \
  /usr/include/c++/9/bits/stl_bvector.h /usr/include/c++/9/bits/vector.tcc \
- /usr/include/aarch64-linux-gnu/NvInferRuntime.h \
- /usr/include/aarch64-linux-gnu/NvInferRuntimeCommon.h \
- /usr/include/c++/9/cassert /usr/include/assert.h \
  /usr/include/c++/9/cstring /usr/include/string.h /usr/include/strings.h \
  /usr/include/aarch64-linux-gnu/bits/strings_fortified.h \
  /usr/include/aarch64-linux-gnu/bits/string_fortified.h \
+ /usr/include/c++/9/cassert /usr/include/assert.h \
  /usr/include/c++/9/iostream /usr/include/c++/9/ostream \
  /usr/include/c++/9/ios /usr/include/c++/9/bits/ios_base.h \
  /usr/include/c++/9/bits/locale_classes.h \
@@ -177,19 +177,4 @@ build/custom-BatchNormalization-plugin.cpp.o: \
  /usr/include/c++/9/bits/locale_facets.tcc \
  /usr/include/c++/9/bits/basic_ios.tcc \
  /usr/include/c++/9/bits/ostream.tcc /usr/include/c++/9/istream \
- /usr/include/c++/9/bits/istream.tcc src/cpp/utils.hpp \
- /usr/include/c++/9/map /usr/include/c++/9/bits/stl_tree.h \
- /usr/include/c++/9/ext/aligned_buffer.h \
- /usr/include/c++/9/bits/stl_map.h /usr/include/c++/9/tuple \
- /usr/include/c++/9/utility /usr/include/c++/9/bits/stl_relops.h \
- /usr/include/c++/9/array /usr/include/c++/9/bits/uses_allocator.h \
- /usr/include/c++/9/bits/invoke.h /usr/include/c++/9/bits/stl_multimap.h \
- /usr/include/c++/9/bits/erase_if.h /usr/include/c++/9/iomanip \
- /usr/include/c++/9/locale /usr/include/c++/9/bits/locale_facets_nonio.h \
- /usr/include/c++/9/ctime \
- /usr/include/aarch64-linux-gnu/c++/9/bits/time_members.h \
- /usr/include/aarch64-linux-gnu/c++/9/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/9/bits/codecvt.h \
- /usr/include/c++/9/bits/locale_facets_nonio.tcc \
- /usr/include/c++/9/bits/locale_conv.h \
- /usr/include/c++/9/bits/unique_ptr.h
+ /usr/include/c++/9/bits/istream.tcc

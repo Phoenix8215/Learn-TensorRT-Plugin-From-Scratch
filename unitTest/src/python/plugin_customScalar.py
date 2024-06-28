@@ -5,30 +5,29 @@ import onnx
 import onnxsim
 import os
 
-class CustomScalarImpl(torch.autograd.Function):
+class CustomSliceImpl(torch.autograd.Function):
     @staticmethod
-    def symbolic(g, x, r, s):
-        return g.op("custom::customScalar", x, scalar_f=r, scale_f=s)
+    def symbolic(g, x, start, size):
+        return g.op("custom::customSlice", x, start_i=start, size_i=size)
 
     @staticmethod
-    def forward(ctx, x, r, s):
-        return (x + r) * s
+    def forward(ctx, x, start, size):
+        return x[:, start:start+size, :, :]
 
-class CustomScalar(nn.Module):
-    def __init__(self, r, s):
+class CustomSlice(nn.Module):
+    def __init__(self, start, size):
         super().__init__()
-        self.scalar = r
-        self.scale  = s
+        self.start = start
+        self.size = size
 
     def forward(self, x):
-        return CustomScalarImpl.apply(x, self.scalar, self.scale)
-
+        return CustomSliceImpl.apply(x, self.start, self.size)
 
 class Model(torch.nn.Module):
     def __init__(self):
         super().__init__()
-        self.conv   = nn.Conv2d(1, 3, (3, 3), padding=1)
-        self.act    = CustomScalar(1, 10)
+        self.conv = nn.Conv2d(1, 4, (3, 3), padding=1)
+        self.slice = CustomSlice(1, 1)
     
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
@@ -41,7 +40,7 @@ class Model(torch.nn.Module):
 
     def forward(self, x):
         x = self.conv(x)
-        x = self.act(x)
+        x = self.slice(x)
         return x
 
 def setup_seed(seed):
@@ -50,9 +49,9 @@ def setup_seed(seed):
     # 强制 cuDNN 使用确定性的算法
     torch.backends.cudnn.deterministic = True
 
-def export_norm_onnx(input, model):
+def export_slice_onnx(input, model):
     current_path = os.path.dirname(__file__)
-    file = current_path + "/../../models/onnx/sample_customScalar.onnx"
+    file = current_path + "/../../models/onnx/sample_customSlice.onnx"
     torch.onnx.export(
         model         = model, 
         args          = (input,),
@@ -86,7 +85,7 @@ if __name__ == "__main__":
         [0.7999, 0.3971, 0.7544, 0.5695, 0.4388],
         [0.6387, 0.5247, 0.6826, 0.3051, 0.4635],
         [0.4550, 0.5725, 0.4980, 0.9371, 0.6556],
-        [0.3138, 0.1980, 0.4162, 0.2843, 0.3398]]]])
+        [0.3138, 0.1980, 0.4162, 0.2843, 0.3398]]]], dtype=torch.float32)
 
     model = Model()
     model.eval() 
@@ -95,6 +94,4 @@ if __name__ == "__main__":
     eval(input, model)
 
     # 导出onnx
-    export_norm_onnx(input, model);
-
-
+    export_slice_onnx(input, model)

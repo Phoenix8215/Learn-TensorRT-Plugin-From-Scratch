@@ -7,36 +7,35 @@ import logging
 from trt_model import test_logger, console_handler, file_handler
 from trt_model import build_network, inference, validation
 
-# cpu 实现
-def CustomScalarCPU(inputH, scalar, scale):
-    return [(inputH[0] + scalar) * scale]
+# CPU 实现
+def CustomSliceCPU(inputH, start, size):
+    return [inputH[0][:, start:start + size, :, :]]
 
-def getCustomScalarPlugin(scalar, scale) -> trt.tensorrt.IPluginV2:
+def getCustomSlicePlugin(start, size) -> trt.tensorrt.IPluginV2:
     for c in trt.get_plugin_registry().plugin_creator_list:
         print(c.name)
-        if c.name == "customScalar":
+        if c.name == "customSlice":
             parameterList = []
-            parameterList.append(trt.PluginField("scalar", np.float32(scalar), trt.PluginFieldType.FLOAT32))
-            parameterList.append(trt.PluginField("scale", np.float32(scale), trt.PluginFieldType.FLOAT32))
+            parameterList.append(trt.PluginField("start", np.int32(start), trt.PluginFieldType.INT32))
+            parameterList.append(trt.PluginField("size", np.int32(size), trt.PluginFieldType.INT32))
             return c.create_plugin(c.name, trt.PluginFieldCollection(parameterList))
     return None
 
-
-def customScalarTest(shape, scalar, scale):
+def customSliceTest(shape, start, size):
     current_path = os.path.dirname(__file__)
     soFile       = current_path + "/../../lib/custom-plugin.so"
     trtFile      = current_path + "/../../models/engine/model-Dim%s.engine" % str(len(shape))
-    testCase     = "<shape=%s,scalar=%f,scale=%f>" % (shape, scalar, scale)
+    testCase     = "<shape=%s,start=%d,size=%d>" % (shape, start, size)
 
     ctypes.cdll.LoadLibrary(soFile)
-    plugin = getCustomScalarPlugin(scalar, scale)
+    plugin = getCustomSlicePlugin(start, size)
     test_logger.info("Test '%s':%s" % (plugin.plugin_type, testCase))
 
     #################################################################
     ################### 从这里开始是builder的部分 ######################
     #################################################################
     engine = build_network(trtFile, shape, plugin)
-    if (engine == None):
+    if engine is None:
         exit()
 
     #################################################################
@@ -47,20 +46,20 @@ def customScalarTest(shape, scalar, scale):
     #################################################################
     ################# 从这里开始是validation的部分 #####################
     #################################################################
-    outputCPU = CustomScalarCPU(bufferH[:nInput], scalar, scale)
+    outputCPU = CustomSliceCPU(bufferH[:nInput], start, size)
     res = validation(nInput, nIO, bufferH, outputCPU)
 
-    if (res):
+    if res:
         test_logger.info("Test '%s':%s finish!\n" % (plugin.plugin_type, testCase))
     else:
         test_logger.error("Test '%s':%s failed!\n" % (plugin.plugin_type, testCase))
         exit()
 
 def unit_test():
-    customScalarTest([32], 1, 10)
-    customScalarTest([32, 32], 2, 5)
-    customScalarTest([16, 16, 16], 1, 3)
-    customScalarTest([8, 8, 8, 8], 1, 5)
+    customSliceTest([4, 3, 32, 32], 1, 1)
+    # customSliceTest([8, 3, 32, 32], 0, 2)
+    # customSliceTest([1, 3, 32, 32], 1, 2)
+    # customSliceTest([1, 3, 32, 32], 2, 1)
 
 if __name__ == "__main__":
     np.set_printoptions(precision=4, linewidth=200, suppress=True)
