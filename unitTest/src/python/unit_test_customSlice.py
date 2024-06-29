@@ -56,7 +56,7 @@ def customSliceTest(shape, start, size):
         exit()
 
 def unit_test():
-    customSliceTest([4, 3, 32, 32], 1, 1)
+    customSliceTest([4, 4, 32, 32], 1, 1)
     # customSliceTest([8, 3, 32, 32], 0, 2)
     # customSliceTest([1, 3, 32, 32], 1, 2)
     # customSliceTest([1, 3, 32, 32], 2, 1)

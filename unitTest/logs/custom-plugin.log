@@ -441,3 +441,9 @@
 [2024-06-28::21:15:40] [INFO]: check:False, absDiff=0.999906, relDiff=0.999990
 [2024-06-28::21:15:40] [ERROR]: Test 'customSlice':<shape=[4, 3, 32, 32],start=1,size=1> failed!
 
+[2024-06-28::21:35:24] [INFO]: Starting unit test...
+[2024-06-28::21:35:24] [INFO]: Test 'customSlice':<shape=[4, 4, 32, 32],start=1,size=1>
+[2024-06-28::21:35:27] [INFO]: Succeeded loading engine!
+[2024-06-28::21:35:27] [INFO]: check:False, absDiff=0.999416, relDiff=0.999990
+[2024-06-28::21:35:27] [ERROR]: Test 'customSlice':<shape=[4, 4, 32, 32],start=1,size=1> failed!
+
