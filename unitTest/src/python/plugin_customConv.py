@@ -5,25 +5,10 @@ from torch.onnx.symbolic_helper import _get_tensor_sizes
 import onnx
 import onnxsim
 
-# Define the IdentityConvBase module
-class IdentityConvBase(nn.Module):
-    def __init__(self, channels):
-        super(IdentityConvBase, self).__init__()
-        self.conv = nn.Conv2d(in_channels=channels,
-                              out_channels=channels,
-                              kernel_size=(1, 1),
-                              stride=(1, 1),
-                              padding=(0, 0),
-                              dilation=(1, 1),
-                              groups=channels,
-                              bias=False)
-        self.conv.weight.data = torch.ones(channels, 1, 1, 1)
-        self.conv.weight.requires_grad = False
 
-    def forward(self, x):
-        return self.conv(x)
 
-# Define the DummyIdentityConvOp for the custom operator in ONNX
+
+
 class DummyIdentityConvOp(torch.autograd.Function):
     @staticmethod
     def symbolic(g, input, weight, kernel_shape, strides, pads, group):
@@ -42,7 +27,7 @@ class DummyIdentityConvOp(torch.autograd.Function):
     def forward(ctx, input, weight, kernel_shape, strides, pads, group):
         return input
 
-# Define the DummyIdentityConv module
+
 class DummyIdentityConv(nn.Module):
     def __init__(self, channels):
         super(DummyIdentityConv, self).__init__()
@@ -58,39 +43,19 @@ class DummyIdentityConv(nn.Module):
                                       self.strides, self.pads, self.group)
         return x
 
-# Define the IdentityConv module
-class IdentityConv(IdentityConvBase):
-    def __init__(self, channels):
-        super(IdentityConv, self).__init__(channels)
-        self.kernel_shape = list(self.conv.kernel_size)
-        self.strides = list(self.conv.stride)
-        self.pads = list(self.conv.padding)
-        self.pads = self.pads + self.pads
-        self.group = self.conv.groups
 
-    def forward(self, x):
-        x = super(IdentityConv, self).forward(x)
-        return x
 
-# Define the IdentityNeuralNetwork module
+
 class IdentityNeuralNetwork(nn.Module):
     def __init__(self, channels):
         super(IdentityNeuralNetwork, self).__init__()
-        self.conv1 = IdentityConvBase(channels)
-        self.conv2 = IdentityConv(channels=channels)
-        self.conv3 = IdentityConvBase(channels)
-        self.conv2_export = DummyIdentityConv(channels=channels)
+        self.conv1 = DummyIdentityConv(channels)
 
     def forward(self, x):
         x = self.conv1(x)
-        if torch.onnx.is_in_onnx_export():
-            x = self.conv2_export(x)
-        else:
-            x = self.conv2(x)
-        x = self.conv3(x)
         return x
 
-# Define the setup_seed function
+
 def setup_seed(seed):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
@@ -99,7 +64,7 @@ def setup_seed(seed):
 # Define the export_slice_onnx function
 def export_identity_onnx(input, model):
     current_path = os.path.dirname(__file__)
-    file = os.path.join(current_path, "identity_neural_network.onnx")
+    file = current_path + "/../../models/onnx/sample_customConv.onnx"
     torch.onnx.export(
         model=model,
         args=(input,),
@@ -117,7 +82,7 @@ def export_identity_onnx(input, model):
     assert check, "assert check failed"
     onnx.save(model_onnx, file)
 
-# Define the eval function
+
 def eval(input, model):
     output = model(input)
     print("------from infer------")
@@ -137,8 +102,8 @@ if __name__ == "__main__":
     model = IdentityNeuralNetwork(input.size(1))
     model.eval()
     
-    # Compute output
+
     eval(input, model)
 
-    # Export to ONNX
+
     export_identity_onnx(input, model)
