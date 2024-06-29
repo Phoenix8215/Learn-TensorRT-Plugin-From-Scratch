@@ -447,3 +447,238 @@
 [2024-06-28::21:35:27] [INFO]: check:False, absDiff=0.999416, relDiff=0.999990
 [2024-06-28::21:35:27] [ERROR]: Test 'customSlice':<shape=[4, 4, 32, 32],start=1,size=1> failed!
 
+[2024-06-28::21:51:15] [INFO]: Starting unit test...
+[2024-06-28::21:51:15] [INFO]: Test 'customSlice':<shape=[4, 4, 32, 32],start=1,size=1>
+[2024-06-28::21:51:18] [INFO]: Succeeded loading engine!
+[2024-06-28::21:51:18] [INFO]: check:False, absDiff=0.999416, relDiff=0.999990
+[2024-06-28::21:51:18] [ERROR]: Test 'customSlice':<shape=[4, 4, 32, 32],start=1,size=1> failed!
+
+[2024-06-28::21:51:53] [INFO]: Starting unit test...
+[2024-06-28::21:51:53] [INFO]: Test 'customSlice':<shape=[4, 4, 32, 32],start=1,size=1>
+[2024-06-28::21:51:55] [INFO]: Succeeded loading engine!
+[2024-06-28::21:51:55] [INFO]: check:False, absDiff=0.999416, relDiff=0.999990
+[2024-06-28::21:51:55] [ERROR]: Test 'customSlice':<shape=[4, 4, 32, 32],start=1,size=1> failed!
+
+[2024-06-28::21:52:14] [INFO]: Starting unit test...
+[2024-06-28::21:52:14] [INFO]: Test 'customSlice':<shape=[4, 4, 32, 32],start=1,size=1>
+[2024-06-28::21:52:16] [INFO]: Succeeded loading engine!
+[2024-06-28::21:52:16] [INFO]: check:False, absDiff=0.999416, relDiff=0.999990
+[2024-06-28::21:52:16] [ERROR]: Test 'customSlice':<shape=[4, 4, 32, 32],start=1,size=1> failed!
+
+[2024-06-28::21:53:24] [INFO]: Starting unit test...
+[2024-06-28::21:53:24] [INFO]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2>
+[2024-06-28::21:53:26] [INFO]: Succeeded loading engine!
+[2024-06-28::21:53:26] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::21:53:26] [ERROR]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::21:56:54] [INFO]: Starting unit test...
+[2024-06-28::21:56:54] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::21:56:56] [INFO]: Succeeded loading engine!
+[2024-06-28::21:56:56] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::21:56:56] [ERROR]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::21:57:04] [INFO]: Starting unit test...
+[2024-06-28::21:57:04] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::21:57:06] [INFO]: Succeeded loading engine!
+[2024-06-28::21:57:06] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::21:57:06] [ERROR]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::22:04:35] [INFO]: Starting unit test...
+[2024-06-28::22:04:35] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::22:04:37] [INFO]: Succeeded loading engine!
+[2024-06-28::22:04:37] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::22:04:37] [ERROR]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::22:05:47] [INFO]: Starting unit test...
+[2024-06-28::22:05:47] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::22:05:49] [INFO]: Succeeded loading engine!
+[2024-06-28::22:05:49] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::22:05:49] [ERROR]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::22:09:26] [INFO]: Starting unit test...
+[2024-06-28::22:09:26] [INFO]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2>
+[2024-06-28::22:09:28] [INFO]: Succeeded loading engine!
+[2024-06-28::22:09:28] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::22:09:28] [ERROR]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::22:36:17] [INFO]: Starting unit test...
+[2024-06-28::22:36:17] [INFO]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2>
+[2024-06-28::22:36:19] [INFO]: Succeeded loading engine!
+[2024-06-28::22:36:19] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::22:36:19] [ERROR]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::22:39:04] [INFO]: Starting unit test...
+[2024-06-28::22:39:04] [INFO]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2>
+[2024-06-28::22:39:07] [INFO]: Succeeded loading engine!
+[2024-06-28::22:39:07] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::22:39:07] [ERROR]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::22:46:48] [INFO]: Starting unit test...
+[2024-06-28::22:46:48] [INFO]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2>
+[2024-06-28::22:46:51] [INFO]: Succeeded loading engine!
+[2024-06-28::22:46:51] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::22:46:51] [ERROR]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::22:49:48] [INFO]: Starting unit test...
+[2024-06-28::22:49:48] [INFO]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2>
+[2024-06-28::22:49:50] [INFO]: Succeeded loading engine!
+[2024-06-28::22:49:50] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::22:49:50] [ERROR]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::22:53:54] [INFO]: Starting unit test...
+[2024-06-28::22:53:54] [INFO]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2>
+[2024-06-28::22:53:57] [INFO]: Succeeded loading engine!
+[2024-06-28::22:53:57] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::22:53:57] [ERROR]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::22:58:40] [INFO]: Starting unit test...
+[2024-06-28::22:58:40] [INFO]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2>
+[2024-06-28::22:58:42] [INFO]: Succeeded loading engine!
+[2024-06-28::22:58:42] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::22:58:42] [ERROR]: Test 'customSlice':<shape=[4, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::23:06:38] [INFO]: Starting unit test...
+[2024-06-28::23:06:38] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:06:40] [INFO]: Succeeded loading engine!
+[2024-06-28::23:06:40] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::23:06:40] [ERROR]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::23:10:28] [INFO]: Starting unit test...
+[2024-06-28::23:10:28] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:10:30] [INFO]: Succeeded loading engine!
+[2024-06-28::23:10:30] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::23:10:30] [ERROR]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::23:10:41] [INFO]: Starting unit test...
+[2024-06-28::23:17:56] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:17:58] [INFO]: Succeeded loading engine!
+[2024-06-28::23:25:28] [INFO]: Starting unit test...
+[2024-06-28::23:25:28] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:25:30] [INFO]: Succeeded loading engine!
+[2024-06-28::23:25:30] [INFO]: check:False, absDiff=1.989229, relDiff=4362.197266
+[2024-06-28::23:25:30] [ERROR]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::23:32:37] [INFO]: Starting unit test...
+[2024-06-28::23:32:37] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:32:42] [INFO]: Succeeded building engine!
+[2024-06-28::23:32:42] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:32:42] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:32:42] [INFO]: All tests are passed!!
+[2024-06-28::23:35:27] [INFO]: Starting unit test...
+[2024-06-28::23:35:27] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:35:29] [INFO]: Succeeded loading engine!
+[2024-06-28::23:35:29] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:35:29] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:35:29] [INFO]: All tests are passed!!
+[2024-06-28::23:36:30] [INFO]: Starting unit test...
+[2024-06-28::23:36:30] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:36:34] [INFO]: Succeeded building engine!
+[2024-06-28::23:36:34] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:36:34] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:36:34] [INFO]: All tests are passed!!
+[2024-06-28::23:38:11] [INFO]: Starting unit test...
+[2024-06-28::23:38:11] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:38:17] [INFO]: Succeeded building engine!
+[2024-06-28::23:38:17] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:38:17] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:38:17] [INFO]: All tests are passed!!
+[2024-06-28::23:38:47] [INFO]: Starting unit test...
+[2024-06-28::23:38:47] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:38:49] [INFO]: Succeeded loading engine!
+[2024-06-28::23:38:49] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:38:49] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:38:49] [INFO]: Test 'customSlice':<shape=[8, 3, 32, 32],start=0,size=2>
+[2024-06-28::23:38:49] [INFO]: Succeeded loading engine!
+[2024-06-28::23:38:49] [INFO]: check:False, absDiff=0.999906, relDiff=0.999990
+[2024-06-28::23:38:49] [ERROR]: Test 'customSlice':<shape=[8, 3, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::23:39:00] [INFO]: Starting unit test...
+[2024-06-28::23:39:00] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:39:02] [INFO]: Succeeded loading engine!
+[2024-06-28::23:39:02] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:39:02] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:39:02] [INFO]: Test 'customSlice':<shape=[8, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:39:02] [INFO]: Succeeded loading engine!
+[2024-06-28::23:39:02] [INFO]: check:False, absDiff=0.999621, relDiff=0.999990
+[2024-06-28::23:39:02] [ERROR]: Test 'customSlice':<shape=[8, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::23:39:24] [INFO]: Starting unit test...
+[2024-06-28::23:39:24] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:39:26] [INFO]: Succeeded loading engine!
+[2024-06-28::23:39:26] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:39:26] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:39:26] [INFO]: All tests are passed!!
+[2024-06-28::23:39:55] [INFO]: Starting unit test...
+[2024-06-28::23:39:55] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:39:58] [INFO]: Succeeded loading engine!
+[2024-06-28::23:39:58] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:39:58] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:39:58] [INFO]: Test 'customSlice':<shape=[1, 7, 32, 32],start=1,size=3>
+[2024-06-28::23:39:58] [INFO]: Succeeded loading engine!
+[2024-06-28::23:40:30] [INFO]: Starting unit test...
+[2024-06-28::23:40:30] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:40:32] [INFO]: Succeeded loading engine!
+[2024-06-28::23:40:32] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:40:32] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:40:32] [INFO]: Test 'customSlice':<shape=[1, 8, 32, 32],start=1,size=3>
+[2024-06-28::23:40:32] [INFO]: Succeeded loading engine!
+[2024-06-28::23:41:32] [INFO]: Starting unit test...
+[2024-06-28::23:41:32] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:41:37] [INFO]: Succeeded building engine!
+[2024-06-28::23:41:37] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:41:37] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:41:37] [INFO]: Test 'customSlice':<shape=[1, 8, 32, 32],start=1,size=3>
+[2024-06-28::23:41:37] [INFO]: Succeeded loading engine!
+[2024-06-28::23:42:00] [INFO]: Starting unit test...
+[2024-06-28::23:42:00] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:42:02] [INFO]: Succeeded loading engine!
+[2024-06-28::23:42:02] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:42:02] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:42:02] [INFO]: All tests are passed!!
+[2024-06-28::23:42:26] [INFO]: Starting unit test...
+[2024-06-28::23:42:26] [INFO]: Test 'customSlice':<shape=[8, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:42:31] [INFO]: Succeeded building engine!
+[2024-06-28::23:42:31] [INFO]: check:False, absDiff=0.999717, relDiff=0.999990
+[2024-06-28::23:42:31] [ERROR]: Test 'customSlice':<shape=[8, 4, 32, 32],start=0,size=2> failed!
+
+[2024-06-28::23:44:10] [INFO]: Starting unit test...
+[2024-06-28::23:44:10] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:44:15] [INFO]: Succeeded building engine!
+[2024-06-28::23:44:15] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:44:15] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:44:15] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=1,size=3>
+[2024-06-28::23:44:15] [INFO]: Succeeded loading engine!
+[2024-06-28::23:45:01] [INFO]: Starting unit test...
+[2024-06-28::23:45:01] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:45:06] [INFO]: Succeeded building engine!
+[2024-06-28::23:45:06] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:45:06] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:45:06] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=1,size=3>
+[2024-06-28::23:45:06] [INFO]: Succeeded loading engine!
+[2024-06-28::23:45:14] [INFO]: Starting unit test...
+[2024-06-28::23:45:14] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2>
+[2024-06-28::23:45:16] [INFO]: Succeeded loading engine!
+[2024-06-28::23:45:16] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:45:16] [INFO]: Test 'customSlice':<shape=[1, 4, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:45:16] [INFO]: All tests are passed!!
+[2024-06-28::23:45:48] [INFO]: Starting unit test...
+[2024-06-28::23:45:48] [INFO]: Test 'customSlice':<shape=[1, 8, 32, 32],start=0,size=2>
+[2024-06-28::23:45:54] [INFO]: Succeeded building engine!
+[2024-06-28::23:45:54] [INFO]: check:True, absDiff=0.000000, relDiff=0.000000
+[2024-06-28::23:45:54] [INFO]: Test 'customSlice':<shape=[1, 8, 32, 32],start=0,size=2> finish!
+
+[2024-06-28::23:45:54] [INFO]: All tests are passed!!

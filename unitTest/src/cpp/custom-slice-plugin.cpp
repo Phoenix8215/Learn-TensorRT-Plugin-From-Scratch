@@ -4,6 +4,8 @@
 #include <cstring>
 #include <cassert>
 #include <iostream>
+#include <utils.hpp>
+
 using namespace nvinfer1;
 
 namespace custom
@@ -85,7 +87,9 @@ int32_t CustomSlicePlugin::enqueue(const PluginTensorDesc* inputDesc, const Plug
 {
     const float* input = static_cast<const float*>(inputs[0]);
     float* output = static_cast<float*>(outputs[0]);
+    LOG("inputDesc[0].dims.d=> %d x %d x %d x %d ", inputDesc[0].dims.d[0], inputDesc[0].dims.d[1], inputDesc[0].dims.d[2], inputDesc[0].dims.d[3]);
     int numElements = mSize * inputDesc[0].dims.d[2] * inputDesc[0].dims.d[3];
+    // cudaMemcpy(output, input + mStart * inputDesc[0].dims.d[2] * inputDesc[0].dims.d[3], numElements * sizeof(float), cudaMemcpyDeviceToDevice);
     cudaMemcpyAsync(output, input + mStart * inputDesc[0].dims.d[2] * inputDesc[0].dims.d[3], numElements * sizeof(float), cudaMemcpyDeviceToDevice, stream);
     return 0;
 }
@@ -99,6 +103,7 @@ DimsExprs CustomSlicePlugin::getOutputDimensions(int32_t outputIndex, const Dims
 {
     DimsExprs output(inputs[0]);
     output.d[1] = exprBuilder.constant(mSize);
+    LOG("output.d=> %d x %d x %d x %d ", output.d[0]->getConstantValue(), output.d[1]->getConstantValue(), output.d[2]->getConstantValue(), output.d[3]->getConstantValue());
     return output;
 }
 
@@ -159,6 +164,8 @@ IPluginV2* CustomSlicePluginCreator::createPlugin(const char* name, const Plugin
             size = *static_cast<const int*>(fields[i].data);
         }
     }
+    // LOG("start=>%d", start);
+    // LOG("size=>%d", size);
     return new CustomSlicePlugin(name, start, size);
 }
 

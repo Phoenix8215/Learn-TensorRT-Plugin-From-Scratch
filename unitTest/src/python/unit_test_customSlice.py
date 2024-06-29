@@ -13,7 +13,7 @@ def CustomSliceCPU(inputH, start, size):
 
 def getCustomSlicePlugin(start, size) -> trt.tensorrt.IPluginV2:
     for c in trt.get_plugin_registry().plugin_creator_list:
-        print(c.name)
+        # print(c.name)
         if c.name == "customSlice":
             parameterList = []
             parameterList.append(trt.PluginField("start", np.int32(start), trt.PluginFieldType.INT32))
@@ -56,10 +56,9 @@ def customSliceTest(shape, start, size):
         exit()
 
 def unit_test():
-    customSliceTest([4, 4, 32, 32], 1, 1)
-    # customSliceTest([8, 3, 32, 32], 0, 2)
-    # customSliceTest([1, 3, 32, 32], 1, 2)
-    # customSliceTest([1, 3, 32, 32], 2, 1)
+    # 这个插件batchsize = 1，可自行修改
+    customSliceTest([1, 8, 32, 32], 0, 2)
+
 
 if __name__ == "__main__":
     np.set_printoptions(precision=4, linewidth=200, suppress=True)
