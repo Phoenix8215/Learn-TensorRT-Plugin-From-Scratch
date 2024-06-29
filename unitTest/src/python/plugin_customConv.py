@@ -7,8 +7,6 @@ import onnxsim
 
 
 
-
-
 class DummyIdentityConvOp(torch.autograd.Function):
     @staticmethod
     def symbolic(g, input, weight, kernel_shape, strides, pads, group):

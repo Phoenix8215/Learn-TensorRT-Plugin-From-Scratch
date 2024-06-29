@@ -85,6 +85,11 @@ size_t CustomSlicePlugin::getWorkspaceSize(const PluginTensorDesc* inputs, int32
 
 int32_t CustomSlicePlugin::enqueue(const PluginTensorDesc* inputDesc, const PluginTensorDesc* outputDesc, const void* const* inputs, void* const* outputs, void* workspace, cudaStream_t stream) noexcept
 {
+    // 检查通道维度
+    if (inputDesc[0].dims.d[0] != 1) {
+        LOGE("Error: Batchsize is not 1. Received Batchsize dimension: %d", inputDesc[0].dims.d[0]);
+        return -1;  
+    }
     const float* input = static_cast<const float*>(inputs[0]);
     float* output = static_cast<float*>(outputs[0]);
     LOG("inputDesc[0].dims.d=> %d x %d x %d x %d ", inputDesc[0].dims.d[0], inputDesc[0].dims.d[1], inputDesc[0].dims.d[2], inputDesc[0].dims.d[3]);

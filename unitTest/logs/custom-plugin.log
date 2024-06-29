@@ -682,3 +682,15 @@
 [2024-06-28::23:45:54] [INFO]: Test 'customSlice':<shape=[1, 8, 32, 32],start=0,size=2> finish!
 
 [2024-06-28::23:45:54] [INFO]: All tests are passed!!
+[2024-06-29::10:37:39] [INFO]: Starting unit test...
+[2024-06-29::10:37:39] [INFO]: Test 'customSlice':<shape=[4, 8, 32, 32],start=0,size=2>
+[2024-06-29::10:37:41] [INFO]: Succeeded loading engine!
+[2024-06-29::10:37:41] [INFO]: check:False, absDiff=0.999771, relDiff=0.999990
+[2024-06-29::10:37:41] [ERROR]: Test 'customSlice':<shape=[4, 8, 32, 32],start=0,size=2> failed!
+
+[2024-06-29::10:40:32] [INFO]: Starting unit test...
+[2024-06-29::10:40:32] [INFO]: Test 'customSlice':<shape=[4, 8, 32, 32],start=0,size=2>
+[2024-06-29::10:40:37] [INFO]: Succeeded building engine!
+[2024-06-29::10:40:37] [INFO]: check:False, absDiff=0.999771, relDiff=0.999990
+[2024-06-29::10:40:37] [ERROR]: Test 'customSlice':<shape=[4, 8, 32, 32],start=0,size=2> failed!
+

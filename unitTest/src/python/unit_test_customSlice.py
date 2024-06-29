@@ -57,7 +57,7 @@ def customSliceTest(shape, start, size):
 
 def unit_test():
     # 这个插件batchsize = 1，可自行修改
-    customSliceTest([1, 8, 32, 32], 0, 2)
+    customSliceTest([4, 8, 32, 32], 0, 2)
 
 
 if __name__ == "__main__":
