@@ -76,6 +76,7 @@ void reportAssertion(bool success, char const* msg, char const* file, int32_t li
 void reportValidation(bool success, char const* msg, char const* file, int32_t line);
 
 void caughtError(std::exception const& e);
+void logInfo(char const* msg);
 
 bool fileExists(const std::string fileName);
 bool fileRead(const std::string &path, std::vector<unsigned char> &data, size_t &size);
