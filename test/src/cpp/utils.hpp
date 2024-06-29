@@ -70,6 +70,13 @@ static void __log_info(Level level, const char* format, ...) {
     // }
 }
 
+#define PLUGIN_ASSERT(val) reportAssertion((val), #val, __FILE__, __LINE__)
+void reportAssertion(bool success, char const* msg, char const* file, int32_t line);
+#define PLUGIN_VALIDATE(val) reportValidation((val), #val, __FILE__, __LINE__)
+void reportValidation(bool success, char const* msg, char const* file, int32_t line);
+
+void caughtError(std::exception const& e);
+
 bool fileExists(const std::string fileName);
 bool fileRead(const std::string &path, std::vector<unsigned char> &data, size_t &size);
 // std::string getEnginePath(std::string onnxPath, Model::precision prec);
